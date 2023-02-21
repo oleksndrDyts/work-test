@@ -13,7 +13,6 @@ import UserInfo from 'components/UserInfo';
 
 const Layout = () => {
   const isLoading = useSelector(getIsLoading);
-  console.log(isLoading);
   const dispatch = useDispatch();
 
   useEffect(() => {
