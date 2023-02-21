@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { fetchBonuses, getTodayBonus } from 'redux/bonus/bonus-operations';
-import { getIsLoading } from 'redux/user/user-selectors';
 
 import AppBar from 'components/AppBar';
 import { Outlet } from 'react-router-dom';
