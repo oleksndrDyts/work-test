@@ -20,7 +20,6 @@ export const register = async credentials => {
 export const login = async credentials => {
   const { data } = await instance.post('/users/login', credentials);
   setToken(data.token);
-  console.log(data);
   return data;
 };
 

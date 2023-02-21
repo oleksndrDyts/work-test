@@ -1,9 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import Notiflix from 'notiflix';
 
 import { fetchCurrentUser } from 'redux/user/user-operations';
+import { getIsLoading } from 'redux/user/user-selectors';
 
 import LoginPage from 'pages/LoginPage';
 import UserPage from 'pages/UserPage';
@@ -78,6 +79,7 @@ Notiflix.Notify.init({
 });
 
 const App = () => {
+  const isLoading = useSelector(getIsLoading);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -85,18 +87,22 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <Routes>
-      <Route element={<PrivateRoute />}>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<UserPage />} />
-          <Route path="/add" element={<AddBonusPage />} />
-        </Route>
-      </Route>
+    <>
+      {!isLoading && (
+        <Routes>
+          <Route element={<PrivateRoute />}>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<UserPage />} />
+              <Route path="/add" element={<AddBonusPage />} />
+            </Route>
+          </Route>
 
-      <Route element={<PublicRoute />}>
-        <Route path="/login" element={<LoginPage />} />
-      </Route>
-    </Routes>
+          <Route element={<PublicRoute />}>
+            <Route path="/login" element={<LoginPage />} />
+          </Route>
+        </Routes>
+      )}{' '}
+    </>
   );
 };
 

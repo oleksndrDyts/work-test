@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchBonuses, getTodayBonus } from 'redux/bonus/bonus-operations';
+import { getIsLoading } from 'redux/user/user-selectors';
 
 import AppBar from 'components/AppBar';
 import { Outlet } from 'react-router-dom';
@@ -11,6 +12,8 @@ import { MainContainer } from 'components/common.styled';
 import UserInfo from 'components/UserInfo';
 
 const Layout = () => {
+  const isLoading = useSelector(getIsLoading);
+  console.log(isLoading);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,18 +21,20 @@ const Layout = () => {
     dispatch(getTodayBonus());
   }, [dispatch]);
   return (
-    <div>
-      <LayoutContainer>
-        <AppBar />
-        <UserInfo />
-      </LayoutContainer>
+    <>
+      <div>
+        <LayoutContainer>
+          <AppBar />
+          <UserInfo />
+        </LayoutContainer>
 
-      <Main>
-        <MainContainer>
-          <Outlet />
-        </MainContainer>
-      </Main>
-    </div>
+        <Main>
+          <MainContainer>
+            <Outlet />
+          </MainContainer>
+        </Main>
+      </div>
+    </>
   );
 };
 
