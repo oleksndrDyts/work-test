@@ -12,7 +12,6 @@ import { MainContainer } from 'components/common.styled';
 import UserInfo from 'components/UserInfo';
 
 const Layout = () => {
-  const isLoading = useSelector(getIsLoading);
   const dispatch = useDispatch();
 
   useEffect(() => {
