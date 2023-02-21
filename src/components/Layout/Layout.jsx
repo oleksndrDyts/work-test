@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { fetchBonuses, getTodayBonus } from 'redux/bonus/bonus-operations';
 
 import AppBar from 'components/AppBar';
-import { Outlet, Navigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 import { MainContainer } from 'components/common.styled';
 import UserInfo from 'components/UserInfo';

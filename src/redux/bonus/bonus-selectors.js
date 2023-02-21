@@ -1,6 +1,4 @@
-import { formatDate } from 'utils/formatDate';
 import { structureBonuses } from 'utils/structureBonuses';
-import { sum } from '../../utils/calc';
 
 export const getBonuses = ({ bonus }) => {
   const res = [...bonus.items];

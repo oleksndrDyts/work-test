@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import { useState, useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
 import { getTodayDate } from 'utils/getTodayDate';
 
 import DatePicker from 'components/DatePicker';

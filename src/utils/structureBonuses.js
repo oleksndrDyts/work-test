@@ -1,6 +1,3 @@
-import { useSelector } from 'react-redux';
-import { getBonusAmount } from 'redux/bonus/bonus-selectors';
-
 import { sum } from './calc';
 
 export const structureBonuses = items => {

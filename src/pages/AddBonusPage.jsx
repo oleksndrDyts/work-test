@@ -1,16 +1,15 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
-import { addBonus, getTodayBonus } from 'redux/bonus/bonus-operations';
-import { isLoading, isFetching, getError } from 'redux/bonus/bonus-selectors';
+import { addBonus } from 'redux/bonus/bonus-operations';
+import { isFetching } from 'redux/bonus/bonus-selectors';
 
 import AddBonusForm from 'components/AddBonusForm';
 import AddCheck from 'components/AddCheck';
 import Spinner from 'components/Spinner';
 
 const AddBonusPage = () => {
-  const err = useSelector(getError);
   const isLoadings = useSelector(isFetching);
   const [items, setItems] = useState([]);
   const dispatch = useDispatch();

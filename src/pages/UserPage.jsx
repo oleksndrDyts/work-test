@@ -2,12 +2,7 @@ import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState, useRef } from 'react';
 
-import {
-  getBonuses,
-  getBonusAmount,
-  getIsLoading,
-  getError,
-} from 'redux/bonus/bonus-selectors';
+import { getBonuses, getIsLoading } from 'redux/bonus/bonus-selectors';
 
 import UserInfoTable from 'components/UserInfoTable';
 import UserInfoDetaileSelect from 'components/UserInfoDetaileSelect';
@@ -16,10 +11,9 @@ import Spinner from 'components/Spinner';
 import { structureBonuses } from 'utils/structureBonuses';
 import UserInfoDetailedTable from 'components/UserInfoDetailedTable';
 import { getTodayDate } from 'utils/getTodayDate';
-import { fetchBonuses, getTodayBonus } from 'redux/bonus/bonus-operations';
+import { fetchBonuses } from 'redux/bonus/bonus-operations';
 
 const UserPage = () => {
-  const err = useSelector(getError);
   const loading = useSelector(getIsLoading);
   const bonuses = useSelector(getBonuses);
   const [dateToFetch, setDateToFetch] = useState(() => getTodayDate());
@@ -44,7 +38,7 @@ const UserPage = () => {
       return;
     }
     dispatch(fetchBonuses(fetchDate));
-  }, [dateToFetch]);
+  }, [dateToFetch, dispatch, fetchDate]);
 
   useEffect(() => {
     return () => {
@@ -52,7 +46,7 @@ const UserPage = () => {
         dispatch(fetchBonuses());
       }
     };
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

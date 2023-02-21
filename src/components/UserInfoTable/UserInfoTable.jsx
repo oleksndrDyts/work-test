@@ -1,5 +1,3 @@
-import styled from 'styled-components';
-
 import TableCommon from 'components/TableCommon';
 
 const UserInfoTable = ({ items }) => {

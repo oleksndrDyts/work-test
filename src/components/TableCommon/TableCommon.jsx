@@ -34,16 +34,6 @@ const TableCommon = ({ init, items, lastItemColor }) => {
 
 export default TableCommon;
 
-const PageContainer = styled.div`
-  display: flex;
-  /* flex-direction: column; */
-  /* justify-content: center; */
-  /* overflow-y: scroll; */
-  /* max-height: 80vh; */
-
-  /* background-color: #de9494; */
-`;
-
 const TableContainer = styled.div`
   max-height: 80vh;
   overflow-y: scroll;

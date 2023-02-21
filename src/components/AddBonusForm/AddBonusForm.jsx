@@ -2,7 +2,6 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 
-import { formatDate } from 'utils/formatDate';
 import { formatDateWithHours } from 'utils/formatDateWithHours';
 
 // import { useDispatch } from 'react-redux';
@@ -15,7 +14,7 @@ const AddBonusForm = ({ setItemsState }) => {
 
   const {
     register,
-    formState: { errors, isDirty, dirtyFields, watch },
+
     handleSubmit,
     resetField,
   } = useForm();
@@ -28,7 +27,6 @@ const AddBonusForm = ({ setItemsState }) => {
     // const rowDate = 1676411000000;
     const dateData = formatDateWithHours(rowDate);
     console.log(dateData);
-    const date = formatDate(rowDate);
     const bonus = initialBounus ? Number(initialBounus) : countBonus(weight);
     console.log(bonus);
     setItemsState({
@@ -124,25 +122,3 @@ const Select = styled.select``;
 const Option = styled.option``;
 
 const Btn = styled.button``;
-
-const Summ = styled.p`
-  position: relative;
-
-  margin-top: 20px;
-  margin-bottom: 10px;
-`;
-
-const Line = styled.span`
-  ::before {
-    content: ' ';
-    position: absolute;
-    left: 0;
-    top: -5px;
-    height: 2px;
-    border-radius: 21px;
-    transition: all 0.3s ease 0s;
-    background-color: black;
-
-    width: 100%;
-  }
-`;
