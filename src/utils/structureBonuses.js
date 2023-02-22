@@ -21,6 +21,10 @@ export const structureBonuses = items => {
 
   const total = result.reduce((acc, el) => (acc += el.bonus), 0);
 
-  result.push({ goods: 'Загалом', bonus: total, _id: 'total' });
+  result.push({
+    goods: 'Загалом',
+    bonus: parseInt(total * 100) / 100,
+    _id: 'total',
+  });
   return result;
 };
