@@ -98,7 +98,7 @@ const Form = styled.form`
 
   /* margin: 0 auto; */
 
-  width: 400px;
+  /* width: 400px; */
 `;
 
 const Label = styled.label`

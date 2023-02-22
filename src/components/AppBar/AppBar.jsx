@@ -1,14 +1,14 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-const AppBar = () => {
+const AppBar = ({ setBurgerClosed }) => {
   return (
     <Nav>
       <ul>
-        <ListItem>
+        <ListItem onClick={setBurgerClosed}>
           <Link to="/">Головна</Link>
         </ListItem>
-        <ListItem>
+        <ListItem onClick={setBurgerClosed}>
           <Link to="/add">Додати товар</Link>
         </ListItem>
       </ul>
@@ -19,8 +19,12 @@ const AppBar = () => {
 export default AppBar;
 
 const Nav = styled.nav`
-  width: 200px;
-  height: 100%;
+  width: 150px;
+
+  @media screen and (min-width: 828px) {
+    width: 200px;
+    height: 100%;
+  }
 `;
 
 const ListItem = styled.li`

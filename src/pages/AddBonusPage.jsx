@@ -49,7 +49,8 @@ const AddBonusPage = () => {
 export default AddBonusPage;
 
 const PageContainer = styled.div`
-  display: flex;
-  align-items: start;
-  justify-content: space-around;
+  @media screen and (min-width: 828px) {
+    display: flex;
+    justify-content: space-between;
+  }
 `;

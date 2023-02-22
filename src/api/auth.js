@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'https://work-testback-production.up.railway.app/api',
+  baseURL: 'http://localhost:3003/api',
 });
 
 const setToken = token => {

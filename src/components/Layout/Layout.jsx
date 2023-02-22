@@ -1,17 +1,28 @@
 import styled from 'styled-components';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
+import { Outlet } from 'react-router-dom';
 
 import { fetchBonuses, getTodayBonus } from 'redux/bonus/bonus-operations';
 
 import AppBar from 'components/AppBar';
-import { Outlet } from 'react-router-dom';
-
+import BurgerMenu from 'components/BurgerMenu';
 import { MainContainer } from 'components/common.styled';
 import UserInfo from 'components/UserInfo';
 
 const Layout = () => {
   const dispatch = useDispatch();
+  const [isBurgerOpen, setIsBurgerOpen] = useState(false);
+  const isMobile = useMediaQuery({ query: '(max-width:514px)' });
+
+  const burgerToggle = () => {
+    setIsBurgerOpen(!isBurgerOpen);
+  };
+
+  const setBurgerClosed = () => {
+    setIsBurgerOpen(false);
+  };
 
   useEffect(() => {
     dispatch(fetchBonuses());
@@ -21,8 +32,15 @@ const Layout = () => {
     <>
       <div>
         <LayoutContainer>
-          <AppBar />
-          <UserInfo />
+          {isMobile ? (
+            <BurgerMenu
+              isOpen={isBurgerOpen}
+              setBurgerClosed={setBurgerClosed}
+            />
+          ) : (
+            <AppBar />
+          )}
+          <UserInfo isOpen={isBurgerOpen} burgerToggle={burgerToggle} />
         </LayoutContainer>
 
         <Main>
@@ -48,8 +66,9 @@ const Main = styled.main`
   position: relative;
   /* flex-grow: 1; */
   /* width: 95%; */
-  margin-left: 225px;
+  margin-left: 15px;
   margin-right: 15px;
+  margin-top: 85px;
 
   /* position: relative; */
   top: -38px;
@@ -63,4 +82,13 @@ const Main = styled.main`
   border-radius: 4px;
 
   height: 85vh;
+
+  @media screen and (min-width: 515px) {
+    margin-left: 9.3rem;
+    margin-top: 0;
+  }
+
+  @media screen and (min-width: 828px) {
+    margin-left: 13rem;
+  }
 `;

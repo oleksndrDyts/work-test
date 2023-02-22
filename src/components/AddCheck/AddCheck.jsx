@@ -33,8 +33,9 @@ const ComponentContainer = styled.div`
   /* display: flex; */
   /* flex-direction: column; */
   /* background-color: red; */
-  width: 400px;
-  height: 400px;
+  /* width: 400px; */
+  /* height: 400px; */
+  margin-bottom: 20px;
   overflow-y: hidden;
 `;
 

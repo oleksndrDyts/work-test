@@ -52,7 +52,6 @@ const UserPage = () => {
     <>
       <PageContainer>
         <>
-          <UserInfoTable items={bonuses} />
           <DetailedContainer>
             <UserInfoDetaileSelect
               setDateForFetch={setDateForFetch}
@@ -60,6 +59,9 @@ const UserPage = () => {
             />
             <UserInfoDetailedTable items={str} />
           </DetailedContainer>
+          <AllBonusesContainer>
+            <UserInfoTable items={bonuses} />
+          </AllBonusesContainer>
         </>
         {loading && <Spinner dep={loading} />}
       </PageContainer>
@@ -70,8 +72,10 @@ const UserPage = () => {
 export default UserPage;
 
 const PageContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
+  @media screen and (min-width: 828px) {
+    display: flex;
+    justify-content: space-between;
+  }
   /* background-color: red; */
   /* min-height: calc(100vh - 108px); */
   /* flex-direction: column; */
@@ -84,5 +88,15 @@ const PageContainer = styled.div`
 `;
 
 const DetailedContainer = styled.div`
+  @media screen and (max-width: 827px) {
+    margin-bottom: 20px;
+  }
+
   /* display: flex; */
+`;
+
+const AllBonusesContainer = styled.div`
+  @media screen and (min-width: 828px) {
+    padding-top: 39px;
+  }
 `;

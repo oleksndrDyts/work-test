@@ -54,7 +54,8 @@ const TableContainer = styled.div`
 
 const Table = styled.table`
   /* color: white; */
-  width: 500px;
+  /* min-width: 350px; */
+  width: 100%;
   font-weight: 500;
 
   /* border-collapse: collapse; */
