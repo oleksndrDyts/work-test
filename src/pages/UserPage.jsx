@@ -64,6 +64,7 @@ const UserPage = () => {
           </AllBonusesContainer>
         </>
         {loading && <Spinner dep={loading} />}
+        {/* <Spinner dep={loading}></Spinner> */}
       </PageContainer>
     </>
   );

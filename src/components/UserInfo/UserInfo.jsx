@@ -48,6 +48,9 @@ const InfoBar = styled.div`
   z-index: 500;
   /* padding-right: 200px; */
 
+  @media screen and (max-width: 514px) {
+    height: 50px;
+  }
   @media screen and (min-width: 515px) {
     position: relative;
     padding-left: 15px;

@@ -68,7 +68,7 @@ const Main = styled.main`
   /* width: 95%; */
   margin-left: 15px;
   margin-right: 15px;
-  margin-top: 85px;
+  margin-top: 95px;
 
   /* position: relative; */
   top: -38px;

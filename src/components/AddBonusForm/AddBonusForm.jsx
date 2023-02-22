@@ -7,28 +7,28 @@ import { formatDateWithHours } from 'utils/formatDateWithHours';
 // import { useDispatch } from 'react-redux';
 // import { addBonus } from 'redux/bonus/bonus-slice';
 
+const regExp = /^[\d|\.|\,]+/; // eslint-disable-line
+
 const AddBonusForm = ({ setItemsState }) => {
   const [goodss, setGoods] = useState('homefood');
 
   // const dispatch = useDispatch();
 
-  const {
-    register,
+  const { register, handleSubmit, resetField } = useForm();
 
-    handleSubmit,
-    resetField,
-  } = useForm();
   const countBonus = weight => {
+    console.log(Number(weight));
+
     return weight * 20;
   };
 
+  // console.log(errors);
+
   const onSubmit = ({ goods, weight, bonus: initialBounus }) => {
     const rowDate = Date.now();
-    // const rowDate = 1676411000000;
     const dateData = formatDateWithHours(rowDate);
-    console.log(dateData);
     const bonus = initialBounus ? Number(initialBounus) : countBonus(weight);
-    console.log(bonus);
+    // console.log(bonus);
     setItemsState({
       goods,
       bonus: parseInt(bonus * 100) / 100,
@@ -66,10 +66,14 @@ const AddBonusForm = ({ setItemsState }) => {
           <Input
             type="number"
             step="0.01"
-            {...register('bonus', { required: true })}
+            {...register('bonus', {
+              required: true,
+              pattern: { value: regExp, message: 'Тільки числа' },
+            })}
           ></Input>
         </Label>
       )}
+      {/* {errors?.bonus?.type === 'required' && <p>Поле обовязкове</p>} */}
 
       {!boolea && (
         <Label>
@@ -77,11 +81,14 @@ const AddBonusForm = ({ setItemsState }) => {
           <Input
             type="number"
             step="0.001"
-            {...register('weight', { required: true })}
+            {...register('weight', {
+              required: true,
+              pattern: { value: regExp, message: 'Тільки числа' },
+            })}
           ></Input>
         </Label>
       )}
-
+      {/* {errors?.weight?.type === 'required' && <p>Поле обовязкове</p>} */}
       <Btn type="submit">Добавити</Btn>
     </Form>
   );
@@ -104,6 +111,7 @@ const Form = styled.form`
 const Label = styled.label`
   display: flex;
   justify-content: space-between;
+  font-size: 18px;
 
   :not(:last-child) {
     margin-bottom: 10px;
@@ -115,10 +123,17 @@ const Input = styled.input`
   width: 100px;
   padding: 10px;
   border-radius: 4px;
+
+  font-size: 16px;
 `;
 
 const Select = styled.select``;
 
 const Option = styled.option``;
 
-const Btn = styled.button``;
+const Btn = styled.button`
+  font-size: 16px;
+  padding: 10px;
+  /* @media screen and (min-width: 515px) {
+  } */
+`;

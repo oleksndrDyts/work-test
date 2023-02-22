@@ -24,7 +24,7 @@ const BurgerContainer = styled.div`
   justify-content: center;
   /* margin-top: 60px; */
 
-  padding-top: 60px;
+  padding-top: 70px;
 
   width: 100vw;
   height: 100vh;

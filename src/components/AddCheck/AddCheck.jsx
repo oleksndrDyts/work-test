@@ -47,13 +47,20 @@ const List = styled.ol`
 const ListItem = styled.li`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   :not(:last-child) {
     margin-bottom: 10px;
   }
 `;
 
-const Btn = styled.button``;
+const Btn = styled.button`
+  font-size: 16px;
+  padding: 10px;
+  margin-left: 10px;
+`;
 const BtnAdd = styled.button`
   margin-top: 20px;
+  font-size: 16px;
+  padding: 10px;
 `;

@@ -9,7 +9,12 @@ const Spinner = ({ dep }) => {
         height="80"
         width="80"
         ariaLabel="comment-loading"
-        wrapperStyle={{ top: '30%', left: '50%', position: 'relative' }}
+        wrapperStyle={{
+          position: 'relative',
+          display: 'flex',
+          top: '40%',
+          justifyContent: 'center',
+        }}
         wrapperClass="comment-wrapper"
         color="#2da0e8"
         backgroundColor="#F4442E"
