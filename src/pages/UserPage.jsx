@@ -22,7 +22,6 @@ const UserPage = () => {
 
   const str = structureBonuses(bonuses);
   const dispatch = useDispatch();
-  console.log(str);
 
   const setDateForFetch = (date, changeBoolean) => {
     setIsTodayDate(changeBoolean);

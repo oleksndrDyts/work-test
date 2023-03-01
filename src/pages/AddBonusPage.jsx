@@ -13,13 +13,10 @@ const AddBonusPage = () => {
   const isLoadings = useSelector(isFetching);
   const [items, setItems] = useState([]);
   const dispatch = useDispatch();
-  // console.log(isLoadings);
 
   const onAddBonus = () => {
     dispatch(addBonus({ items }));
-    // setTimeout(() => {
-    //   dispatch(getTodayBonus());
-    // }, 150);
+
     setItems([]);
   };
 
