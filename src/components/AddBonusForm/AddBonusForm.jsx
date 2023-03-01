@@ -34,6 +34,7 @@ const AddBonusForm = ({ setItemsState }) => {
       bonus: parseInt(bonus * 100) / 100,
       id: rowDate,
       dateData,
+      weight,
     });
     resetField('bonus');
     resetField('weight');

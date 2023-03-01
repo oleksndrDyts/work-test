@@ -60,7 +60,7 @@ const UserPage = () => {
             <UserInfoDetailedTable items={str} />
           </DetailedContainer>
           <AllBonusesContainer>
-            <UserInfoTable items={bonuses} />
+            <UserInfoTable items={bonuses} dateToFetch={dateToFetch} />
           </AllBonusesContainer>
         </>
         {loading && <Spinner dep={loading} />}

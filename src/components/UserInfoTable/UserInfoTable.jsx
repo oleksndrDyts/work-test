@@ -1,12 +1,21 @@
 import TableCommon from 'components/TableCommon';
 
-const UserInfoTable = ({ items }) => {
+import { getTodayDate } from 'utils/getTodayDate';
+
+const UserInfoTable = ({ items, dateToFetch }) => {
+  // console.log(206.2 / 20);
+
+  const dateData =
+    dateToFetch === getTodayDate()
+      ? { label: 'Час', value: ['dateData', 'hours'], obj: true }
+      : { label: 'Дата', value: ['dateData', 'date'], obj: true };
+  console.log(dateData);
+
   const init = {
-    head: ['Товар', 'Бонус', 'Дата', 'Вага'],
     initItems: [
       { label: 'Товар', value: 'goods' },
       { label: 'Бонус', value: 'bonus' },
-      { label: 'Дата', value: ['dateData', 'date'], obj: true },
+      dateData,
       { label: 'Вага', value: 'weight' },
     ],
   };
@@ -16,13 +25,14 @@ const UserInfoTable = ({ items }) => {
   return (
     <TableCommon
       init={init}
-      items={items.map(el => ({
-        ...el,
-        weight:
-          el.goods === 'Miocane' || el.goods === 'Miogato'
-            ? '-'
-            : el.bonus / 20,
-      }))}
+      items={items}
+      // items={items.map(el => ({
+      //   ...el,
+      //   weight:
+      //     el.goods === 'Miocane' || el.goods === 'Miogato'
+      //       ? '-'
+      //       : el.bonus / 20,
+      // }))}
     />
   );
 };

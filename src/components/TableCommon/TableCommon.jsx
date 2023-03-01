@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 const TableCommon = ({ init, items, lastItemColor }) => {
+  console.log(init);
   return (
     <TableContainer>
       <Table>
         <THead>
           <Tr>
-            {init.head.map(el => (
-              <Th key={el}>{el}</Th>
+            {init.initItems.map(({ label }) => (
+              <Th key={label}>{label}</Th>
             ))}
           </Tr>
         </THead>
