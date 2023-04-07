@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const TableCommon = ({ init, items, lastItemColor }) => {
-  console.log(init);
   return (
     <TableContainer>
       <Table>

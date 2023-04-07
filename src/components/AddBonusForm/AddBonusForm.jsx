@@ -17,21 +17,19 @@ const AddBonusForm = ({ setItemsState }) => {
   const { register, handleSubmit, resetField } = useForm();
 
   const countBonus = weight => {
-    console.log(Number(weight));
-
     return weight * 20;
   };
-
-  // console.log(errors);
 
   const onSubmit = ({ goods, weight, bonus: initialBounus }) => {
     const rowDate = Date.now();
     const dateData = formatDateWithHours(rowDate);
     const bonus = initialBounus ? Number(initialBounus) : countBonus(weight);
-    // console.log(bonus);
     setItemsState({
       goods,
-      bonus: parseInt(bonus * 100) / 100,
+      bonus:
+        goods === 'Nutra cat' || goods === 'Nutra dog'
+          ? 0
+          : parseInt(bonus * 100) / 100,
       id: rowDate,
       dateData,
       weight,
@@ -56,6 +54,8 @@ const AddBonusForm = ({ setItemsState }) => {
           <Option value="Gosbi">Gosbi</Option>
           <Option value="Miocane">Miocane</Option>
           <Option value="Miogato">Miogato</Option>
+          <Option value="Nutra cat">Nutra cat</Option>
+          <Option value="Nutra dog">Nutra dog</Option>
         </Select>
       </Label>
 

@@ -9,6 +9,7 @@ import UserInfoDetaileSelect from 'components/UserInfoDetaileSelect';
 import Spinner from 'components/Spinner';
 
 import { structureBonuses } from 'utils/structureBonuses';
+import { structureWeight } from 'utils/structureBonuses';
 import UserInfoDetailedTable from 'components/UserInfoDetailedTable';
 import { getTodayDate } from 'utils/getTodayDate';
 import { fetchBonuses } from 'redux/bonus/bonus-operations';
@@ -19,6 +20,14 @@ const UserPage = () => {
   const [dateToFetch, setDateToFetch] = useState(() => getTodayDate());
   const [isTodayDate, setIsTodayDate] = useState(true);
   const isTimeToFetchAfterComponentRemove = useRef(false);
+
+  const nutra = () => {
+    const filtred = bonuses.filter(
+      el => el.goods === 'Nutra dog' || el.goods === 'Nutra cat'
+    );
+    return filtred;
+  };
+  // console.log());
 
   const str = structureBonuses(bonuses);
   const dispatch = useDispatch();
@@ -58,6 +67,11 @@ const UserPage = () => {
               isTodayDate={isTodayDate}
             />
             <UserInfoDetailedTable items={str} />
+            {structureWeight(nutra()).map(el => (
+              <p key={el._id}>
+                {el.goods} : {el.weight}
+              </p>
+            ))}
           </DetailedContainer>
           <AllBonusesContainer>
             <UserInfoTable items={bonuses} dateToFetch={dateToFetch} />

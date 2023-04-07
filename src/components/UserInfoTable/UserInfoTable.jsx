@@ -9,7 +9,6 @@ const UserInfoTable = ({ items, dateToFetch }) => {
     dateToFetch === getTodayDate()
       ? { label: 'Час', value: ['dateData', 'hours'], obj: true }
       : { label: 'Дата', value: ['dateData', 'date'], obj: true };
-  console.log(dateData);
 
   const init = {
     initItems: [
