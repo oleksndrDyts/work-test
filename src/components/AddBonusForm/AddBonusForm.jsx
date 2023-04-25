@@ -10,26 +10,47 @@ import { formatDateWithHours } from 'utils/formatDateWithHours';
 const regExp = /^[\d|\.|\,]+/; // eslint-disable-line
 
 const AddBonusForm = ({ setItemsState }) => {
-  const [goodss, setGoods] = useState('homefood');
+  const [goodss, setGoods] = useState('Home Food');
 
   // const dispatch = useDispatch();
 
   const { register, handleSubmit, resetField } = useForm();
 
-  const countBonus = weight => {
+  const countBonus = (weight, type) => {
+    console.log(type);
+    switch (type) {
+      case 'Home Food premium':
+      case 'Paw paw':
+        return parseInt(weight * 10 * 100) / 100;
+
+      case 'Home Food':
+      case 'Albian':
+      case 'Gosbi':
+      case 'My Foob':
+      case 'Mystic':
+        return parseInt(weight * 20 * 100) / 100;
+
+      case 'Nutra cat':
+      case 'Nutra dog':
+        return 0;
+
+      default:
+        break;
+    }
+    console.log(type);
     return weight * 20;
   };
 
   const onSubmit = ({ goods, weight, bonus: initialBounus }) => {
     const rowDate = Date.now();
     const dateData = formatDateWithHours(rowDate);
-    const bonus = initialBounus ? Number(initialBounus) : countBonus(weight);
+    const bonus = initialBounus
+      ? Number(initialBounus)
+      : countBonus(weight, goods);
+
     setItemsState({
       goods,
-      bonus:
-        goods === 'Nutra cat' || goods === 'Nutra dog'
-          ? 0
-          : parseInt(bonus * 100) / 100,
+      bonus,
       id: rowDate,
       dateData,
       weight,
@@ -50,12 +71,16 @@ const AddBonusForm = ({ setItemsState }) => {
         Виберіть товар
         <Select name="goods" {...register('goods')} onChange={onSelectChange}>
           <Option value="Home Food">Home Food</Option>
+          <Option value="Home Food premium">Home Food premium</Option>
           <Option value="Albian">Albian</Option>
           <Option value="Gosbi">Gosbi</Option>
           <Option value="Miocane">Miocane</Option>
           <Option value="Miogato">Miogato</Option>
           <Option value="Nutra cat">Nutra cat</Option>
           <Option value="Nutra dog">Nutra dog</Option>
+          <Option value="Paw paw">Paw paw</Option>
+          <Option value="My Foob">My Foob</Option>
+          <Option value="Mystic">Mystic</Option>
         </Select>
       </Label>
 
@@ -74,7 +99,6 @@ const AddBonusForm = ({ setItemsState }) => {
           ></Input>
         </Label>
       )}
-      {/* {errors?.bonus?.type === 'required' && <p>Поле обовязкове</p>} */}
 
       {!boolea && (
         <Label>
