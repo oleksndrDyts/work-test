@@ -2,7 +2,8 @@ import axios from 'axios';
 
 const instance = axios.create({
   // baseURL: 'http://localhost:3003/api',
-  baseURL: 'https://work-testback-production.up.railway.app/api',
+  // baseURL: 'https://work-testback-production.up.railway.app/api',
+  baseURL: 'https://work-test.onrender.com/api',
 });
 
 const setToken = token => {
